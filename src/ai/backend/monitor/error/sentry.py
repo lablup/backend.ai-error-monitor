@@ -23,6 +23,12 @@ class SentryRavenErrorMonitor(AbstractErrorMonitor):
         self.sentry.update_context(context)
 
 
+def add_plugin_args(parser):
+    parser.add('--raven-uri', env_var='RAVEN_URI',
+               type=str, default=None,
+               help='The sentry.io event report URL with DSN.')
+
+
 def get_plugin(config):
     error_monitor = SentryRavenErrorMonitor()
     error_monitor.init(config)
