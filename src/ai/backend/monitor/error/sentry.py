@@ -8,10 +8,10 @@ class SentryRavenErrorMonitor(AbstractErrorMonitor):
     def __init__(self):
         self.sentry = None
 
-    def init(self, config):
+    def init(self, config, **kwargs):
         self.sentry = raven.Client(
             config.raven_uri,
-            release=raven.fetch_package_version('backend.ai-manager'))
+            release=raven.fetch_package_version(kwargs['app']))
 
     def capture_exception(self, *args):
         self.sentry.capture_exception(*args)
@@ -29,7 +29,7 @@ def add_plugin_args(parser):
                help='The sentry.io event report URL with DSN.')
 
 
-def get_plugin(config):
+def get_plugin(config, **kwargs):
     error_monitor = SentryRavenErrorMonitor()
-    error_monitor.init(config)
+    error_monitor.init(config, **kwargs)
     return error_monitor

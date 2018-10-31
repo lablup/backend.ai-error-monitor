@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 class AbstractErrorMonitor(ABC):
 
     @abstractmethod
-    def init(self, config):
+    def init(self, config, **kwargs):
         raise NotImplementedError
 
     @abstractmethod
