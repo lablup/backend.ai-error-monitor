@@ -14,13 +14,13 @@ class SentryRavenErrorMonitor(AbstractErrorMonitor):
             release=raven.fetch_package_version(kwargs['app']))
 
     def capture_exception(self, *args):
-        self.sentry.capture_exception(*args)
+        self.sentry.captureException(*args)
 
     def capture_message(self, msg):
-        self.sentry.capture_message(msg)
+        self.sentry.captureMessage(msg)
 
     def set_context(self, context):
-        self.sentry.update_context(context)
+        self.sentry.user_context(context)
 
 
 def add_plugin_args(parser):
