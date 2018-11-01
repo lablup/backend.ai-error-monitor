@@ -1,6 +1,6 @@
 import raven
 
-from .base import AbstractErrorMonitor
+from ai.backend.common.monitor import AbstractErrorMonitor
 
 
 class SentryRavenErrorMonitor(AbstractErrorMonitor):
@@ -21,6 +21,12 @@ class SentryRavenErrorMonitor(AbstractErrorMonitor):
 
     def set_context(self, context):
         self.sentry.user_context(context)
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        pass
 
 
 def add_plugin_args(parser):
