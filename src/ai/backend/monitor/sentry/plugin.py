@@ -10,7 +10,7 @@ from ai.backend.common.plugin.monitor import AbstractErrorReporterPlugin
 from . import __version__
 
 
-class SentryErrorMonitor(AbstractErrorMonitor):
+class SentryErrorMonitor(AbstractErrorReporterPlugin):
 
     async def init(self) -> None:
         sentry_sdk.init(
