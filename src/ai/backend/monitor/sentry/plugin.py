@@ -21,7 +21,11 @@ class SentryErrorMonitor(AbstractErrorMonitor):
     async def cleanup(self) -> None:
         pass
 
-    async def capture_exception(self, exc_instance: Exception = None) -> None:
+    async def capture_exception(
+        self,
+        exc_instance: Exception = None,
+        context: Mapping[str, Any] = None,
+    ) -> None:
         sentry_sdk.capture_exception(exc_instance)
 
     async def capture_message(self, msg: str) -> None:
