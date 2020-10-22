@@ -6,7 +6,7 @@ Just `pip install backend.ai-monitor-sentry` inside the virtualenv of the Backen
 
 ## Configuration
 
-Set a key with the Sentry DSN string in the cluster's etcd, by running the following command:
+Set a key with the Sentry DSN string in the cluster's etcd, by running the following command in the manager's virtualenv:
 ```
 backend.ai mgr etcd put config/plugins/error_monitor/sentry/dsn "<dsn>"
 ```
