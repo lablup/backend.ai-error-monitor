@@ -12,7 +12,7 @@ from . import __version__
 
 class SentryErrorMonitor(AbstractErrorReporterPlugin):
 
-    async def init(self) -> None:
+    async def init(self, context: Any = None) -> None:
         sentry_sdk.init(
             self.plugin_config['dsn'],
             release=__version__,
